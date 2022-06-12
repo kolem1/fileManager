@@ -1,7 +1,6 @@
 import { basename, dirname, join } from 'path';
-import { rename } from 'fs/promises'
-import { getPath } from '../utils/getPath.js';
-import { logError } from '../utils/logError.js'
+import { rename } from 'fs/promises';
+import { logError, getFilePath } from '../utils/index.js';
 
 export async function rn(currentPath, userFilePath, newName) {
   const fileBaseName = basename(newName);
@@ -9,7 +8,7 @@ export async function rn(currentPath, userFilePath, newName) {
     if (fileBaseName !== newName) {
       throw new Error();
     }
-    const filePath = await getPath(currentPath, userFilePath);
+    const filePath = await getFilePath(currentPath, userFilePath);
     const fileDirname = dirname(filePath);
     const newFilePath = join(fileDirname, newName);
     await rename(filePath, newFilePath);

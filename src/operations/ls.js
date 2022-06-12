@@ -1,5 +1,5 @@
-import { logError } from "../utils/logError.js";
 import { readdir } from 'fs/promises'
+import { logError } from "../utils/index.js";
 
 export async function ls(currentPath) {
   try {

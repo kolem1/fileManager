@@ -1,15 +1,9 @@
-import { stat } from 'fs/promises'
 import { logError } from '../utils/logError.js';
-import { getPath } from '../utils/getPath.js';
+import { getFolderPath } from '../utils/index.js';
 
 export async function cd(currentPath, inputedPath) {
   try {
-    const pathToFolder = await getPath(currentPath, inputedPath);
-    const fileStat = await stat(pathToFolder);
-    if (fileStat.isFile()) {
-      throw new Error();
-    }
-    return pathToFolder;
+    return await getFolderPath(currentPath, inputedPath);
   } catch {
     logError();
   }
