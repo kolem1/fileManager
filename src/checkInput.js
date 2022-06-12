@@ -12,9 +12,10 @@ import { os } from './operations/os/index.js';
 import { hash } from './operations/hash.js';
 import { compress } from './operations/compress.js';
 import { decompress } from './operations/decompress.js';
+import { parseArgs } from './utils/index.js';
 
 export async function checkInput(input, currentPath) {
-  const [operation, ...args] = input.split(' ');
+  const [operation, ...args] = parseArgs(input);
   switch (operation) {
     case 'up':
       return up(currentPath);
