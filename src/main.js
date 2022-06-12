@@ -13,7 +13,7 @@ function run() {
   showCurrentDir();
 
   process.stdin.on('data', async (data) => {
-    dir = await checkInput(data.toString().trim(), dir) || dir;
+    dir = await checkInput(data.toString().trim(), dir);
     showCurrentDir();
   });
 }
