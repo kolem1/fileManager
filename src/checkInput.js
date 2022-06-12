@@ -10,6 +10,7 @@ import { mv } from './operations/mv.js';
 import { rm } from './operations/rm.js';
 import { os } from './operations/os/index.js';
 import { hash } from './operations/hash.js';
+import { compress } from './operations/compress.js';
 
 export async function checkInput(input, currentPath) {
   const [operation, ...args] = input.split(' ');
@@ -43,6 +44,9 @@ export async function checkInput(input, currentPath) {
       break;
     case 'hash':
       await hash(currentPath, args[0]);
+      break;
+    case 'compress':
+      await compress(currentPath, args[0], args[1]);
       break;
     default:
       console.log('Invalid input');
