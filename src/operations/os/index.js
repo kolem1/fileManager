@@ -1,6 +1,7 @@
 import { cpus } from "./cpus.js";
 import { eol } from "./eol.js";
 import { homedir } from "./homedir.js";
+import { username } from "./username.js";
 
 export function os(operation) {
   switch (operation) {
@@ -12,6 +13,9 @@ export function os(operation) {
       break;
     case '--homedir':
       homedir();
+      break;
+    case '--username':
+      username();
       break;
     default:
       console.log('Invalid input');
