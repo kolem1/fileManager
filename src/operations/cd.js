@@ -1,5 +1,6 @@
 import { isAbsolute, join, normalize } from 'path';
 import { access } from 'fs/promises';
+import { logError } from '../utils/logError.js';
 
 export async function cd(currentPath, inputedPath) {
   let newPath;
@@ -12,7 +13,7 @@ export async function cd(currentPath, inputedPath) {
     await access(newPath);
     return newPath;
   } catch {
-    console.log('Operation failed')
+    logError();
     return currentPath;
   }
 }
