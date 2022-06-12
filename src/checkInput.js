@@ -1,10 +1,14 @@
 
 import { up } from './operations/up.js';
+import { cd } from './operations/cd.js';
 
-export function checkInput(input, currentPath) {
-  switch (input) {
+export async function checkInput(input, currentPath) {
+  const [operation, ...args] = input.split(' ');
+  switch (operation) {
     case 'up':
       return up(currentPath);
+    case 'cd':
+      return await cd(currentPath, args[0]);
     default:
       console.log('Invalid input')
   }

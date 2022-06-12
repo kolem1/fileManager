@@ -12,8 +12,8 @@ function run() {
   const showCurrentDir = () => console.log(`You are currently in ${dir}`);
   showCurrentDir();
 
-  process.stdin.on('data', (data) => {
-    dir = checkInput(data.toString().trim(), dir) || dir;
+  process.stdin.on('data', async (data) => {
+    dir = await checkInput(data.toString().trim(), dir) || dir;
     showCurrentDir();
   });
 }
