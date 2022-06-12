@@ -4,8 +4,18 @@ import readline from 'readline';
 
 const args = process.argv.slice(2);
 
-function run() {
-  const nameArg = args.find((arg) => arg.startsWith('--username'));
+async function run() {
+  let nameArg = args.find((arg) => arg.startsWith('--username'));
+  while (!nameArg) {
+    console.log('Please, input your name');
+    await new Promise((resolve) => {
+      process.stdin.on('data', (data) => {
+        nameArg = data.toString();
+        process.stdin.end();
+        resolve();
+      })
+    })
+  }
   const name = nameArg.split('=')[1];
   console.log(`\nWelcome to the File Manager, ${name}!`);
 
