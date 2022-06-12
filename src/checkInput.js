@@ -11,6 +11,7 @@ import { rm } from './operations/rm.js';
 import { os } from './operations/os/index.js';
 import { hash } from './operations/hash.js';
 import { compress } from './operations/compress.js';
+import { decompress } from './operations/decompress.js';
 
 export async function checkInput(input, currentPath) {
   const [operation, ...args] = input.split(' ');
@@ -47,6 +48,9 @@ export async function checkInput(input, currentPath) {
       break;
     case 'compress':
       await compress(currentPath, args[0], args[1]);
+      break;
+    case 'decompress':
+      await decompress(currentPath, args[0], args[1]);
       break;
     default:
       console.log('Invalid input');
